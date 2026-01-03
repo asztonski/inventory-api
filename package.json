@@ -15,5 +15,8 @@
     "joi": "^18.0.2",
     "lowdb": "^7.0.1",
     "nanoid": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }
