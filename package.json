@@ -2,11 +2,14 @@
   "name": "inventory-api",
   "version": "1.0.0",
   "description": "Simple Inventory Management System API built with Node.js and Express. Supports CRUD operations for products, stock management, order processing, and discount rules. Uses lowdb for local JSON-based persistence and follows a basic CQRS pattern. Includes input validation, error handling, and minimal tests.",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No tests yet\" && exit 0",
     "server": "node server.ts",
-    "dev": "nodemon server.ts"
+    "dev": "nodemon server.ts",
+    "lint": "eslint .",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "Dominik Supiński",
@@ -19,10 +22,20 @@
     "nanoid": "^5.1.6"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
+    "@types/supertest": "^6.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.51.0",
+    "@typescript-eslint/parser": "^8.51.0",
+    "eslint": "^9.39.2",
+    "jest": "^30.2.0",
     "nodemon": "^3.1.11",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.51.0"
   }
 }
