@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
   pull_request:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   build-and-test:
@@ -20,13 +20,14 @@ jobs:
           node-version: "22"
 
       - name: Install dependencies
-        run: yarn install
+        run: npm install
 
       - name: Lint
-        run: yarn lint
+        run: npm run lint
 
       - name: Build
-        run: yarn build
+        run: npm run build
 
       - name: Test
-        run: yarn test
+        run: npm test
+>>>>>>> 36d5bc91b227845daa56046d55ef6a3597ac2240
