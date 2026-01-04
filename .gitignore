@@ -1,3 +1,6 @@
 node_modules/
-dist/app.js
-dist/server.js
+dist/
+.env
+*.log
+db.json
+coverage/
