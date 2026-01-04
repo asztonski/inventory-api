@@ -2,14 +2,15 @@
   "name": "inventory-api",
   "version": "1.0.0",
   "description": "Simple Inventory Management System API built with Node.js and Express. Supports CRUD operations for products, stock management, order processing, and discount rules. Uses lowdb for local JSON-based persistence and follows a basic CQRS pattern. Includes input validation, error handling, and minimal tests.",
-  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No tests yet\" && exit 0",
-    "server": "node server.ts",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build": "tsc",
+    "start": "node dist/server.js",
     "dev": "nodemon server.ts",
-    "lint": "eslint .",
-    "build": "tsc"
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "Dominik Supiński",
