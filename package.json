@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.ts",
     "dev": "nodemon server.ts",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "Dominik Supiński",
