@@ -30,4 +30,3 @@ jobs:
 
       - name: Test
         run: npm test
->>>>>>> 36d5bc91b227845daa56046d55ef6a3597ac2240
