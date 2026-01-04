@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.ts",
-    "dev": "nodemon server.ts"
+    "dev": "nodemon server.ts",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "Dominik Supiński",
