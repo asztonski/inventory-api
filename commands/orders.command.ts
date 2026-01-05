@@ -15,7 +15,7 @@ import {
  */
 interface CreateOrderInput {
   customerId: string;
-  location?: string;
+  location?: "US" | "Europe" | "Asia";
   orderDate?: Date;
   products: {
     productId: string;
@@ -89,7 +89,9 @@ export async function createOrder(input: CreateOrderInput): Promise<Order> {
     orderDate,
     productCategories
   );
-  const locationMultiplier = calculateLocationMultiplier(input.location);
+  const locationMultiplier = calculateLocationMultiplier(
+    input.location || "US"
+  );
 
   // Step 4: Choose best discount (highest from customer's perspective)
   const bestDiscount = chooseBestDiscount(
