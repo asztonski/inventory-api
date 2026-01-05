@@ -46,8 +46,8 @@ describe("Discount Utils", () => {
     });
 
     it("should return 1.0 for unknown location (default)", () => {
-      expect(calculateLocationMultiplier("Australia" as any)).toBe(1.0);
-      expect(calculateLocationMultiplier("" as any)).toBe(1.0);
+      expect(calculateLocationMultiplier("Australia" as "US")).toBe(1.0);
+      expect(calculateLocationMultiplier("" as "US")).toBe(1.0);
     });
   });
 
