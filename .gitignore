@@ -3,4 +3,5 @@ dist/
 .env
 *.log
 db.json
+__tests__/test-db.json
 coverage/

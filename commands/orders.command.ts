@@ -15,6 +15,8 @@ import {
  */
 interface CreateOrderInput {
   customerId: string;
+  location?: "US" | "Europe" | "Asia";
+  orderDate?: Date;
   products: {
     productId: string;
     quantity: number;
@@ -41,13 +43,7 @@ interface CreateOrderInput {
 export async function createOrder(input: CreateOrderInput): Promise<Order> {
   const db = getDatabase();
 
-  // Step 1: Validate customer exists
-  const customer = db.data.customers.find((c) => c.id === input.customerId);
-  if (!customer) {
-    throw new Error(`Customer with id ${input.customerId} not found`);
-  }
-
-  // Step 2: Validate products and check stock availability
+  // Step 1: Validate products and check stock availability
   const orderProducts: OrderProduct[] = [];
   const productCategories: string[] = [];
   let totalQuantity = 0;
@@ -86,14 +82,16 @@ export async function createOrder(input: CreateOrderInput): Promise<Order> {
   }
 
   // Step 3: Calculate discounts
-  const orderDate = new Date();
+  const orderDate = input.orderDate || new Date();
 
   const volumeDiscount = calculateVolumeDiscount(totalQuantity);
   const seasonalDiscount = calculateSeasonalDiscount(
     orderDate,
     productCategories
   );
-  const locationMultiplier = calculateLocationMultiplier(customer.location);
+  const locationMultiplier = calculateLocationMultiplier(
+    input.location || "US"
+  );
 
   // Step 4: Choose best discount (highest from customer's perspective)
   const bestDiscount = chooseBestDiscount(
@@ -115,7 +113,7 @@ export async function createOrder(input: CreateOrderInput): Promise<Order> {
 
   if (bestDiscount > locationDiscount) {
     // The best discount is NOT from location, so apply it
-    finalAmount = totalAmount * (1 - bestDiscount);
+    finalAmount = finalAmount * (1 - bestDiscount);
   }
   // If locationDiscount was best, finalAmount already has it applied above
 
