@@ -11,6 +11,8 @@ export const createOrderSchema = Joi.object({
     "string.empty": "Customer ID is required",
     "any.required": "Customer ID is required",
   }),
+  location: Joi.string().optional().valid("US", "Europe", "Asia"),
+  orderDate: Joi.date().optional(),
   products: Joi.array()
     .items(
       Joi.object({
