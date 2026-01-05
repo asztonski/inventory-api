@@ -1,6 +1,5 @@
 /**
  * Calculates discount based on total quantity of products ordered
- * Rules from task:
  * - 5-9 units: 10% discount
  * - 10-49 units: 20% discount
  * - 50+ units: 30% discount
@@ -26,7 +25,6 @@ export function calculateVolumeDiscount(totalQuantity: number): number {
 
 /**
  * Adjusts price based on customer location
- * Rules from task:
  * - US: Standard pricing (no change)
  * - Europe: +15% due to VAT
  * - Asia: -5% due to lower logistics costs
@@ -49,4 +47,42 @@ export function calculateLocationMultiplier(
     default:
       return 1.0; // Standard pricing
   }
+}
+
+/**
+ * Applies discounts based on Polish bank holidays
+ * Selected categories for holiday discount: Electronics, Toys
+ */
+
+/**
+ * Calculate seasonal discount based on order date and product categories
+ * @param orderDate - Date when order is placed
+ * @param productCategories - Array of product categories in the order
+ * @returns Discount percentage (0.0 - 0.25)
+ */
+export function calculateSeasonalDiscount(
+  orderDate: Date,
+  productCategories: string[]
+): number {
+  const month = orderDate.getMonth();
+  const day = orderDate.getDate();
+
+  // Black Friday: November 25 (25% discount on everything)
+  if (month === 10 && day === 25) {
+    return 0.25;
+  }
+
+  // Christmas Season: December 24-26 (15% discount on Electronics and Toys)
+  if (month === 11 && day >= 24 && day <= 26) {
+    // Check if order contains Electronics or Toys
+    const hasEligibleCategory = productCategories.some(
+      (category) => category === "Electronics" || category === "Toys"
+    );
+
+    if (hasEligibleCategory) {
+      return 0.15;
+    }
+  }
+
+  return 0; // No seasonal discount
 }
