@@ -7,7 +7,7 @@
   "scripts": {
     "test": "npm run test:all",
     "test:unit": "jest",
-    "test:integration": "tsx --test __tests__/integration/**/*.js",
+    "test:integration": "npx tsx --test __tests__/integration/products.integration.test.js && npx tsx --test __tests__/integration/orders.integration.test.js",
     "test:all": "npm run test:unit && npm run test:integration",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
