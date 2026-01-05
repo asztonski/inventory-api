@@ -23,3 +23,30 @@ export function calculateVolumeDiscount(totalQuantity: number): number {
   }
   return 0; // No discount
 }
+
+/**
+ * Adjusts price based on customer location
+ * Rules from task:
+ * - US: Standard pricing (no change)
+ * - Europe: +15% due to VAT
+ * - Asia: -5% due to lower logistics costs
+ */
+
+/**
+ * Calculate location-based price multiplier
+ * @param location - Customer location (US, Europe, Asia)
+ * @returns Price multiplier (0.95 - 1.15)
+ */
+export function calculateLocationMultiplier(
+  location: "US" | "Europe" | "Asia"
+): number {
+  switch (location) {
+    case "Europe":
+      return 1.15; // +15% VAT
+    case "Asia":
+      return 0.95; // -5% lower logistics
+    case "US":
+    default:
+      return 1.0; // Standard pricing
+  }
+}
