@@ -20,7 +20,7 @@ router.get("/", (req: Request, res: Response) => {
   try {
     const products = getAllProducts();
     res.status(200).json(products);
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: "Failed to retrieve products" });
   }
 });
@@ -45,7 +45,7 @@ router.post("/", (req: Request, res: Response) => {
     const product = createProduct(value);
 
     res.status(201).json(product);
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: "Failed to create product" });
   }
 });
