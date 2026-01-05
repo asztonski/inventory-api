@@ -28,7 +28,7 @@ describe("Product Validators", () => {
 
       const { error } = createProductSchema.validate(invalidProduct);
       expect(error).toBeDefined();
-      expect(error?.details[0].message).toContain('"name" is required');
+      expect(error?.details[0].message).toContain("\"name\" is required");
     });
 
     it("should reject product with name longer than 50 characters", () => {
