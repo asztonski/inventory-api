@@ -5,7 +5,10 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "jest --passWithNoTests",
+    "test": "npm run test:all",
+    "test:unit": "jest",
+    "test:integration": "tsx --test __tests__/integration/**/*.js",
+    "test:all": "npm run test:unit && npm run test:integration",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "build": "tsc",
@@ -37,6 +40,7 @@
     "supertest": "^7.1.4",
     "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.51.0"
   }
