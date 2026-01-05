@@ -113,7 +113,7 @@ export async function createOrder(input: CreateOrderInput): Promise<Order> {
 
   if (bestDiscount > locationDiscount) {
     // The best discount is NOT from location, so apply it
-    finalAmount = totalAmount * (1 - bestDiscount);
+    finalAmount = finalAmount * (1 - bestDiscount);
   }
   // If locationDiscount was best, finalAmount already has it applied above
 
