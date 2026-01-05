@@ -86,3 +86,29 @@ export function calculateSeasonalDiscount(
 
   return 0; // No seasonal discount
 }
+
+/** Chooses the best discount available
+ * Compares volume, seasonal, and location-based pricing to select the best
+ * discount for the customer (maximum savings).
+ *
+ * Note: Location multiplier > 1.0 means price INCREASE, not a discount.
+ * Only multipliers < 1.0 are treated as discounts.
+ */
+
+/**
+ * Select the highest applicable discount from available options
+ * @param volumeDiscount - Volume-based discount (0.0 - 0.3)
+ * @param seasonalDiscount - Seasonal/promotional discount (0.0 - 0.25)
+ * @param locationMultiplier - Location-based price multiplier (0.95 - 1.15)
+ * @returns The highest discount percentage from customer's perspective
+ */
+export function chooseBestDiscount(
+  volumeDiscount: number,
+  seasonalDiscount: number,
+  locationMultiplier: number
+): number {
+  const locationDiscount =
+    locationMultiplier < 1.0 ? 1 - locationMultiplier : 0;
+  // Compare all discounts and return the maximum
+  return Math.max(volumeDiscount, seasonalDiscount, locationDiscount);
+}
